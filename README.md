@@ -7,7 +7,11 @@ Read more about Body Mass Index and how it impacts people health in various ways
 
 Data taken from http://www4.stat.ncsu.edu/~boos/var.select/diabetes.tab.txt is showing Blood Sugar (in mg/l) of 442 diabetes patient with 10 baseline variables, age, sex, body mass index, average blood pressure, and six blood serum measurements
 
-Yes, you heard right in Title of this article, we will used no state of the art SciKit Learn but will build Linear Regression model with our own hand from scratch and explaining things on the way.
+Code Requirements
+
+The example code is in Python (version 2.6 or higher will work). The only other requirement is NumPy.
+
+Yes, you heard right, we will not used state of the art SciKit Learn but will build Linear Regression model with our own hand from scratch and explaining things on the way.
 
 We will be covering:
 Fitting data around straight line equation y = mx+b
