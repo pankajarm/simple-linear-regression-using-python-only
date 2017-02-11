@@ -1,13 +1,21 @@
 # simple-linear-regression-using-python-only
 
 In this nano project, we will build simple but robust linear regression model from scratch in python and use it to predict
-life expectancy of people from their BMI data. 
+Blood Sugar of Diabetes Patient from their BMI data. 
 
-Read more about Body Mass Index and how it impacts people health in various ways, and ultimately life expectancy Here: https://en.wikipedia.org/wiki/Body_mass_index
+Read more about Body Mass Index and how it impacts people health in various ways, and ultimately how it effect Blood Sugar among diabetes patient Here: https://en.wikipedia.org/wiki/Body_mass_index
 
-Data taken from https://www.gapminder.org/ showing life expectancy of people in different country in correlation to BMI
+Data taken from http://www4.stat.ncsu.edu/~boos/var.select/diabetes.tab.txt is showing Blood Sugar (in mg/l) of 442 diabetes patient with 10 baseline variables, age, sex, body mass index, average blood pressure, and six blood serum measurements
 
-Yes, you heard right, we will used no state of the art SciKit Learn but will build Linear Regression model with our own hand.
+Yes, you heard right in Title of this article, we will used no state of the art SciKit Learn but will build Linear Regression model with our own hand from scratch and explaining things on the way.
+
+We will be covering:
+Fitting data around straight line equation y = mx+b
+computing errors via Square of errors (y_predicted - y)^2
+Minimizing Errors using partial derviates aka Gradient Descent
+Computing new m & b by using Gradient Descent with Learning Rate over many iterations
+Use this new m & b to predict Blood Sugar of sample/test data of BMI
+
 
 Please note, This is not to undermine anyhow, that these packages are unncesseary (because they are totally absolutely wonderful, widely used in industry and much needed packages for any real life machine learning or data science projects)
 
