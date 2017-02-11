@@ -37,6 +37,20 @@ let's say we use randomly m = 1 and b = 1. Then we put these values into equatio
 
 so y_predicted = (1)(20.62058) + 1 = 21.62058 years
 
-now actual y was 52.8 years, so error = (y - y_predicted ) ^ 2 = (52.8 years - 21.62058 years ) ^2 = 
+now actual y was 52.8 years, so error = (y - y_predicted ) ^ 2 = (52.8 years - 21.62058 years ) ^2 = 31.17942 years. That Sound like a huge unforgiven error for predicting a person age. However, this is where logic of self learning, meaning learning from your mistake will come to picture.
+
+Now, we will take this error and try to minimize this by choosing different value of 'm' and 'b'. How do we know, which value of 'm' and 'b' is right at this point, actually we don't, however, we know that which direction we can take, meaning, we know, that by choosing m = 1 and b = 1 we are very short of predicting correct life span of 52.8 years. so let's go in the direction of choosing higher m and b. 
+
+how about m = 3 and b = 3 , so new y_predicted = (m)(X) + b = (3)(20.62058) + 3 = 64.86174 years. 
+so, error = (y - y_predicted ) ^ 2 = (52.8 years - 64.86174 years ) ^2 = 12.06174 years (you saw why we choose to square the errors, so we have positive error value..)
+
+12.06174 years error is better then 31.17942 years but still not good. 
+
+how about m = 2.5 and b = 2.5 , so new y_predicted = (m)(X) + b = (2.5)(20.62058) + 2.5 = 54.05145 years. 
+so, error = (y - y_predicted ) ^ 2 = (52.8 years - 54.05145 years ) ^2 = 1.25145 years
+
+Not bad at all, we just achieve error of only 1.25 years in just 3 steps of starting with random values of m and b and then learning from error which direction to go. Now, that's sound something like self learning. 
 
 Hope it all make sense to you...
+
+Let me know your thoughts, questions under comments section. 
