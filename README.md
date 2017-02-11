@@ -44,6 +44,7 @@ Long Story short, They way Training or model fitting works (atleast in my unders
 This will be achieved by choosing any random value of m and b and then put X value into equation (y = mX +b ), this will give us a new y. This new y aka y_predicted will be compare to actual y from data, and then we will take the square of the difference of errors, i.e. error function f(x) = (y_initial - y_predicted)^2
 
 # The Square of Error function
+
 def compute_error_for_line_given_points(b, m, points):
  
  totalError = 0
@@ -56,6 +57,7 @@ def compute_error_for_line_given_points(b, m, points):
  print "At Row {0}, using b = {1} and m = {2}, Error = {3}".format(i,b, m, totalError)
 
 return totalError / float(len(points))
+
 for example, if you open life_expectancy.csv https://github.com/pankymathur/LIfe-Expectancy-From-BMI/blob/master/bmi_and_life_expectancy.csv you will see in first row, with BMI (X) = 20.62058 and Life Expectancy (y) = 52.8 years
 
 let's say we use randomly m = 1 and b = 1. Then we put these values into equation y_predicted = mX +b.
@@ -87,25 +89,28 @@ Partial derivative is a branch of calculus, Calculus is a branch of mathematics,
 In our example, our error function is f(x) = (y_initial - y_predicted)^2, so by using partial derivative on f(x) with respect to b and keeping m as constant, we can get rate of change of error function with respect to b, we can call this b_gradient, this could be positive or negative value and it need to be applied to previous value of b, so to come up with new value of b.
 Here is the mathematical formula for calculating b_gradient:
 
-
 b_gradient += - (2/N) * 1 * (y - ((m_current * x) + b_current))
+
+
 Similarly, by using partial derivative on f(x) = (y_initial - y_predicted)^2 with respect to m and keeping b as constant, we can get m_gradient, this could be positive or negative value and it need to applied to previous value of m, so to come up with new value of m.
 Here is the mathematical formula for calculating m_gradient:
 
-
 m_gradient += - (2/N) * x * (y - ((m_current * x) + b_current))
+
+
 Computing new m & b by using Gradient Descent with Learning Rate over many iterations
 
 new_b = b_current - (learningRate * b_gradient)
 new_m = m_current - (learningRate * m_gradient)
-Now, We will use b_gradient and m_gradient which could be positive or negative value and we will apply them to previous value of b and m, in order to come up with new value of b and m. However, instead of adding directly b_gradient and m_gradient, we will add a learning rate factor to these gradients. Then we will run this same process over many iterations to come up with best fitted b_gradient and m_gradient.
 
+Now, We will use b_gradient and m_gradient which could be positive or negative value and we will apply them to previous value of b and m, in order to come up with new value of b and m. However, instead of adding directly b_gradient and m_gradient, we will add a learning rate factor to these gradients. Then we will run this same process over many iterations to come up with best fitted b_gradient and m_gradient.
 
 
 In Machine Learning or Deep Learning lingo, Learning Rate and Iterations are called Hyper parameters. These hyper parameter are used to fine tune model by fitting model more accurately around the data, however, beware that Hyper Parameters are two sided sword, you want to use them to fine tune your model on training data but you don't want to over fit the model so that it will do poor prediction on any new test result. Again, in Machine Learning/ Deep Learning lingo it mean Generalized model vs Over fitted model.
 
 
 #Here is complete step_gradient function
+
 def step_gradient(b_current, m_current, points, learningRate, iteration):
  
  b_gradient = 0
@@ -128,7 +133,10 @@ new_b = b_current - (learningRate * b_gradient)
 
 
  return [new_b, new_m]
+ 
+ 
 #Here is complete Gradient Runner Function that run step gradient over many iterations to come up with # new b and m
+
 def gradient_descent_runner(points, starting_b, starting_m, learning_rate, num_iterations):
  
  b1 = starting_b
@@ -141,6 +149,7 @@ def gradient_descent_runner(points, starting_b, starting_m, learning_rate, num_i
 Use this new m & b to predict Blood Sugar of sample/test data of BMI
 
 # now lets use this new b and m to predict some random person expected life expectancy by given BMI
+
  print "\n Enter BMI to get Blood Pressure\n"
  X_test = 27.6
  print "\n Test/Sample BMI is: {0}\n".format(X_test)
