@@ -15,7 +15,7 @@ def step_gradient(b_current, m_current, points, learningRate):
     for i in range(0, len(points)):
         x = points[i, 0]
         y = points[i, 1]
-        b_gradient += -(2/N) * (y - ((m_current * x) + b_current))
+        b_gradient += -(2/N) * 1 * (y - ((m_current * x) + b_current))
         m_gradient += -(2/N) * x * (y - ((m_current * x) + b_current))
     new_b = b_current - (learningRate * b_gradient)
     new_m = m_current - (learningRate * m_gradient)
@@ -53,6 +53,9 @@ def pankax():
     print "Running..."
     
     [b, m] = gradient_descent_runner(points, initial_b, initial_m, learning_rate, num_iterations)
+
+    print (b,m)
+
     print "After {0} iterations b = {1}, m = {2}, error = {3}".format(num_iterations, b, m, compute_error_for_line_given_points(b, m, points))
 
 
