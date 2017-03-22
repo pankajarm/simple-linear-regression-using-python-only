@@ -34,6 +34,15 @@ def step_gradient(b_current, m_current, points, learningRate, iteration):
 	return [new_b, new_m]
 
 
+def gradient_descent_runner(points, starting_b, starting_m, learning_rate, num_iterations):
+	
+	b1 = starting_b
+	m1 = starting_m
+	for i in range(num_iterations):
+		b1, m1 = step_gradient(b1, m1, array(points), learning_rate, i)
+	
+	return [b1, m1]
+
 # The Square of Error function
 def compute_error_for_line_given_points(b, m, points):
 	
@@ -47,17 +56,6 @@ def compute_error_for_line_given_points(b, m, points):
 		print "At Row {0}, using b = {1} and m = {2}, Error = {3}".format(i,b, m, totalError)
 
 	return totalError / float(len(points))
-
-
-def gradient_descent_runner(points, starting_b, starting_m, learning_rate, num_iterations):
-	
-	b1 = starting_b
-	m1 = starting_m
-	for i in range(num_iterations):
-		b1, m1 = step_gradient(b1, m1, array(points), learning_rate, i)
-	
-	return [b1, m1]
-
 
 def pankax():
 
