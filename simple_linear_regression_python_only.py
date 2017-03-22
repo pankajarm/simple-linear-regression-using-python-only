@@ -27,8 +27,8 @@ def step_gradient(b_current, m_current, points, learningRate, iteration):
 
 	new_b = b_current - (learningRate * b_gradient)
 	new_m = m_current - (learningRate * m_gradient)
-	print "\n After {0} iterations the new b = b_current - (learningRate * b_gradient) = {1} - ({3} * {2}) = {4}".format(iteration+1, b_current, b_gradient, learningRate, new_b)
-	print "After {0} iterations the new m = m_current - (learningRate * m_gradient) = {1} - ({3} * {2}) = {4} \n".format(iteration+1, m_current, m_gradient, learningRate, new_m)
+	# print "\n After {0} iterations the new b = b_current - (learningRate * b_gradient) = {1} - ({3} * {2}) = {4}".format(iteration+1, b_current, b_gradient, learningRate, new_b)
+	# print "After {0} iterations the new m = m_current - (learningRate * m_gradient) = {1} - ({3} * {2}) = {4} \n".format(iteration+1, m_current, m_gradient, learningRate, new_m)
 
 
 	return [new_b, new_m]
@@ -47,15 +47,18 @@ def gradient_descent_runner(points, starting_b, starting_m, learning_rate, num_i
 def compute_error_for_line_given_points(b, m, points):
 	
 	totalError = 0
+	error = 0
 	
 	for i in range(0, len(points)):
 		x = points[i,0]
 		y = points[i,1]
-		# Our Error funcion f(X)= (y_initial-y_predicted)^2
-		totalError += (y - (m*x + b)) ** 2
-		print "At Row {0}, using b = {1} and m = {2}, Error = {3}".format(i,b, m, totalError)
+		# Our Error funcion f(x) = ((y_initial - y_predicted)^2) / Number of data rows
+		error = ((y - (m*x + b)) ** 2) / len(points)
+		totalError += error / len(points)
+		print "At Row {0}, using b = {1} and m = {2}, Error = {3}".format(i, b, m, error)
 
-	return totalError / float(len(points))
+	print "\n Total Error is: {0}".format(totalError)
+	return error, totalError
 
 def pankax():
 
@@ -63,7 +66,7 @@ def pankax():
 	points = genfromtxt("diabetes.csv", delimiter=",")
 	
 	# choose learning rate
-	learning_rate = 0.0001
+	learning_rate = 0.001
 	
 	# iniital y-intercept guess aka the constant in linear equation
 	initial_b = 1
@@ -72,10 +75,10 @@ def pankax():
 	initial_m = 1
 	
 	# choose numbr of iterations to run linear regression
-	num_iterations = 1000
+	num_iterations = 100
 	
 	#print linear regression is working
-	print "\n First compute Error for each row by using equation y_predicted = mx +b and error =  (y - y_predicted) ^2 by using random b = {0}, and m = {1} \n".format(initial_b, initial_m)
+	print "\n First compute Error for each row by using equation y_predicted = mx +b and error =  (y - y_predicted) ^2 / len(points) by using random b = {0}, and m = {1} \n".format(initial_b, initial_m)
 
 	# compute errors
 	compute_error_for_line_given_points(initial_b, initial_m,points)
@@ -91,8 +94,8 @@ def pankax():
 	print "\n After {0}nd iterations final b = {1}, m = {2} \n".format(num_iterations,b,m)
 
 	# now lets use this new b and m to predict some random person expected life expectancy by given BMI
-	print "\n Enter BMI to get Blood Pressure\n"
-	X_test = 27.6
+	print "\n Enter BMI to get Blood Sugar\n"
+	X_test = 27.2
 	print "\n Test/Sample BMI is: {0}\n".format(X_test)
 	y_test = m * X_test + b
 	print "\n Blood Sugar is {0} \n".format(y_test)
