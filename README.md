@@ -28,4 +28,4 @@ Ok, enough background, lets' kickoff this nano project.
 
 Please read the complete article here:
 
-http://pankax.com/learn-linear-regression-a-must-have-for-deep-learning-machine-learning-any-kind-learnings-you-will-do/
+http://pankajmathur.com/learn-linear-regression-a-must-have-for-deep-learning-machine-learning-any-kind-learnings-you-will-do/
