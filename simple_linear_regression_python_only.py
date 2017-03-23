@@ -19,8 +19,12 @@ def step_gradient(b_current, m_current, points, learningRate, iteration):
 	for i in range(len(points)):
 		x = points[i,0]
 		y = points[i,1]
-		#  Partial derivatives calcultion for b_gradient an m_gradient for error funcion f(X)= (y_initial-y_predicted)^2
-		b_gradient += - (2/N) * 1 * (y - ((m_current * x) + b_current))
+		#  Partial derivatives calcultion for b_gradient an m_gradient for error funcion f(X)= ((y_initial-y_predicted)^2) / N
+
+		# (d)/(db)((y - (m x + b))^2/N) = (2 (b + m x - y))/N = - (2/N (-b -mx +y)) =  - (2/N (y - (mx+b))
+		b_gradient += - (2/N) * (y - ((m_current * x) + b_current))
+
+		# (d)/(db)((y - (m x + b))^2/N) = (2x (b + m x - y))/N = - (2x/N (-b -mx +y)) = - (2x/N (y - (mx+b))
 		m_gradient += - (2/N) * x * (y - ((m_current * x) + b_current))
 
 		# print "At row = {0}, b_gradient = {1}, m_gradient = {2}".format(i, b_gradient, m_gradient)
